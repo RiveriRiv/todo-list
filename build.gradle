@@ -12,6 +12,29 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'junit:junit:4.11'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.2'
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.4.5')
+
+    implementation 'org.springframework.data:spring-data-jpa:3.3.0'
+    implementation 'javax.persistence:javax.persistence-api:2.2'
+
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+
+    runtimeOnly 'com.h2database:h2'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
 
 test {
