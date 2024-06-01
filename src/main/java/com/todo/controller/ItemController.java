@@ -5,14 +5,11 @@ import com.todo.data.Status;
 import com.todo.service.ItemService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.ValidationException;
 import java.net.URI;
 import java.util.List;
 
@@ -20,9 +17,7 @@ import java.util.List;
 @RequestMapping("/item")
 @AllArgsConstructor
 @Slf4j
-public class TodoController {
-
-    private static final String ERROR = "error";
+public class ItemController {
 
     private final ItemService itemService;
 
@@ -68,24 +63,5 @@ public class TodoController {
         List<ItemDto> itemDto = itemService.getAllItems(isNotDone);
 
         return ResponseEntity.ok(itemDto);
-    }
-
-    @ExceptionHandler(ValidationException.class)
-    public ModelAndView onConstraintValidationException(ValidationException e) {
-        String message = e.getMessage();
-        log.error("Exception occurred during a validation: {}", message);
-
-        ModelAndView model = new ModelAndView(ERROR);
-        model.addObject("exception", message);
-
-        return model;
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleAllExceptions(Exception e) {
-        String message = e.getMessage();
-        log.error("Unknown exception occurred: {}", message);
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
     }
 }

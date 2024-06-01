@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 public interface ItemMapper {
     ItemMapper INSTANCE = Mappers.getMapper(ItemMapper.class);
 
-    ItemDto itemToItemDto(Item car);
+    ItemDto itemToItemDto(Item item);
 
-    Item itemDtoToItem(ItemDto car);
+    Item itemDtoToItem(ItemDto itemDto);
 }

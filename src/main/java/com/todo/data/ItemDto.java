@@ -1,14 +1,16 @@
 package com.todo.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 @Builder
 public class ItemDto {
 
