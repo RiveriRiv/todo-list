@@ -7,15 +7,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter
-@Setter
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,9 +23,9 @@ public class Item {
 
     private Status status;
 
-    private Date creationDate;
+    private LocalDateTime creationDate;
 
-    private Date dueDate;
+    private LocalDateTime dueDate;
 
-    private Date markDate;
+    private LocalDateTime markDate;
 }

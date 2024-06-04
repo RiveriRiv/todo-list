@@ -2,7 +2,7 @@ spring:
   main:
     banner_mode: 'OFF'
   profiles:
-    active: production
+    active: test
   h2:
     console:
       enabled: true

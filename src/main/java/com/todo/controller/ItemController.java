@@ -3,26 +3,29 @@ package com.todo.controller;
 import com.todo.data.ItemDto;
 import com.todo.data.Status;
 import com.todo.service.ItemService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/item")
 @AllArgsConstructor
+@Validated
 @Slf4j
 public class ItemController {
 
     private final ItemService itemService;
 
     @PostMapping
-    public ResponseEntity<Void> createItem(@RequestBody ItemDto itemDto) {
+    public ResponseEntity<Void> createItem(@Valid @RequestBody ItemDto itemDto) {
         long id = itemService.createItem(itemDto);
 
         URI location = ServletUriComponentsBuilder
@@ -34,7 +37,7 @@ public class ItemController {
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping("/status/{id}")
+    @PutMapping("/description/{id}")
     public ResponseEntity<String> updateDescription(@PathVariable long id,
                                                     @RequestParam("description") String description) {
         itemService.updateDescription(id, description);
@@ -42,7 +45,7 @@ public class ItemController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/description/{id}")
+    @PutMapping("/status/{id}")
     public ResponseEntity<String> updateStatus(@PathVariable long id,
                                                @RequestParam("status") Status status) {
         itemService.updateStatus(id, status);

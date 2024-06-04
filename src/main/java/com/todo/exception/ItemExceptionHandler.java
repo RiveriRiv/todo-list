@@ -40,4 +40,14 @@ public class ItemExceptionHandler {
     public ResponseEntity<String> handleGenericException(Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred");
     }
+
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ResponseEntity<String> handleItemNotFoundException(ItemNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleItemNotFoundException(IllegalArgumentException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }

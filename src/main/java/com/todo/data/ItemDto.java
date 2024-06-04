@@ -1,16 +1,15 @@
 package com.todo.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
+@Data
 @Builder
 public class ItemDto {
 
@@ -21,12 +20,12 @@ public class ItemDto {
     @NotNull(message = "Status is required")
     private Status status;
 
-    private Date creationDate;
+    private LocalDateTime creationDate;
 
     @JsonProperty(required = true)
     @NotNull(message = "Due date is required")
     @FutureOrPresent(message = "Due date cannot be in the past")
-    private Date dueDate;
+    private LocalDateTime dueDate;
 
-    private Date markDate;
+    private LocalDateTime markDate;
 }
