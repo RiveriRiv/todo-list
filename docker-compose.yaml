@@ -1,0 +1,7 @@
+version: '3'
+services:
+  todo:
+    container_name: todo-list
+    image: localhost:8080/item:v1
+    ports:
+      - 8080:8080
