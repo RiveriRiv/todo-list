@@ -1,0 +1,84 @@
+{
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/item",
+      "description": "Create new item",
+      "requestBody": {
+        "application/json": {
+          "name": "string",
+          "description": "string",
+          "status": "string"
+        }
+      },
+      "responses": {
+        "201": "Created",
+        "404": "Bad request"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/item/description/{id}",
+      "description": "Update description",
+      "parameters": {
+        "id": "integer (path)",
+        "description": "string (query)"
+      },
+      "responses": {
+        "200": "successful",
+        "404": "Item not found"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/item/status/{id}",
+      "description": "Update status",
+      "parameters": {
+        "id": "integer (path)",
+        "status": "string (query)"
+      },
+      "responses": {
+        "200": "successful",
+        "404": "Item not found"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/item/{id}",
+      "description": "Get item by id",
+      "parameters": {
+        "id": "integer (path)"
+      },
+      "responses": {
+        "200": {
+          "application/json": {
+            "name": "string",
+            "description": "string",
+            "status": "string"
+          }
+        },
+        "404": "Item not found"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/item",
+      "description": "Get all items",
+      "parameters": {
+        "description" : "True for only not done items",
+        "isNotDone" : "boolean (query, optional)"
+      },
+      "responses": {
+        "200": {
+          "application/json": [
+            {
+              "name": "string",
+              "description": "string",
+              "status": "string"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

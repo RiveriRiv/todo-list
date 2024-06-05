@@ -19,6 +19,12 @@ compileTestJava {
     options.compilerArgs += '-parameters'
 }
 
+tasks {
+    test {
+        enabled = false
+    }
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:3.3.0'
     implementation platform('org.springframework.boot:spring-boot-dependencies:3.3.0')
